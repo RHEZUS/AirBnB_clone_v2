@@ -2,7 +2,6 @@
 """This module defines a class to manage file storage for hbnb clone"""
 import json
 
-
 class FileStorage:
     """This class manages storage of hbnb models in JSON format"""
     __file_path = 'file.json'
@@ -18,9 +17,9 @@ class FileStorage:
             if type(cls) == str:
                 cls = eval(cls)
             cls_dict = {}
-            for k, v in self.__objects.items():
-                if type(v) == cls:
-                    cls_dict[k] = v
+            for key, value in self.__objects.items():
+                if type(value) == cls:
+                    cls_dict[key] = value
             return cls_dict
         return self.__objects
 
@@ -66,5 +65,8 @@ class FileStorage:
         try:
             self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
         except (AttributeError, KeyError):
-            """self.all().clear()"""
             pass
+    
+    def close(self):
+        """Call the reload method."""
+        self.reload()
