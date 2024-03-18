@@ -26,10 +26,10 @@ class BaseModel:
     updated_at = Column(DateTime, nullable=False, default=datetime.utcnow())
 
     def __init__(self, *args, **kwargs):
-        """Initialize a new BaseModel.
+        """Initialize new BaseModel.
 
         Args:
-            *args (any): Unused.
+            *args (any): nullable.
             **kwargs (dict): Key/value pairs of attributes.
         """
         self.id = str(uuid4())
@@ -42,7 +42,7 @@ class BaseModel:
                     setattr(self, key, value)
 
     def save(self):
-        """Update updated_at with the current datetime."""
+        """Update updated_at withdq the current datetime."""
         self.updated_at = datetime.utcnow()
         models.storage.new(self)
         models.storage.save()
