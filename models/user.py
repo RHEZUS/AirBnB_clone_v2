@@ -7,7 +7,7 @@ from sqlalchemy import String
 from sqlalchemy.orm import relationship
 
 
-class User(BaseModel):
+class User(BaseModel, Base):
     """Represents a user for a MySQL database.
 
     Inherits from SQLAlchemy Base and links to the MySQL table users.
@@ -26,5 +26,5 @@ class User(BaseModel):
     password = Column(String(128), nullable=False)
     first_name = Column(String(128), nullable=True)
     last_name = Column(String(128), nullable=True)
-    places = relationship('Places', breaking='user', cascade='delete')
-    reviews = relationship('Reviews', breaking='user', cascade='delete')
+    places = relationship('Places', backref='user', cascade='delete')
+    reviews = relationship('Reviews', backref='user', cascade='delete')

@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ State Module for HBNB project """
 from models.base_model import BaseModel
+from models.base_model import Base
 from models.city import City
 from os import getenv
 import models
@@ -10,7 +11,7 @@ from sqlalchemy import String
 from sqlalchemy.orm import relationship
 
 
-class State(BaseModel):
+class State(BaseModel, Base):
     """Represents a state for a MySQL database.
 
     Inherits from SQLAlchemy Base and links to the MySQL table states.

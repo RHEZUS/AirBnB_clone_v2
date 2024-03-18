@@ -6,12 +6,8 @@ from models.base_model import Base
 from models.base_model import BaseModel
 from models.amenity import Amenity
 from models.review import Review
-from sqlalchemy import Column
-from sqlalchemy import Float
-from sqlalchemy import ForeignKey
-from sqlalchemy import Integer
-from sqlalchemy import String
-from sqlalchemy import Table
+from sqlalchemy import Column, Float, ForeignKey
+from sqlalchemy import Integer, String, Table
 from sqlalchemy.orm import relationship
 
 
@@ -24,7 +20,7 @@ association_table = Table("place_amenity", Base.metadata,
                                  primary_key=True, nullable=False))
 
 
-class Place(BaseModel):
+class Place(BaseModel, Base):
     """Represents a Place for a MySQL database.
 
     Inherits from SQLAlchemy Base and links to the MySQL table places.
