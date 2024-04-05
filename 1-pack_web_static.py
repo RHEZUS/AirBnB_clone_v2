@@ -5,12 +5,10 @@ folder of the AirBnB Clone repo
 """
 
 from datetime import datetime
-from fabric import task
 from fabric.api import local
 from os.path import isdir
 
 
-@task
 def do_pack():
     """generates a tgz archive"""
     try:
